@@ -20,12 +20,21 @@ class EnsureTeamMembership
     {
         [$user, $team] = [$request->user(), $this->team($request)];
 
-        abort_if(! $user || ! $team || ! $user->belongsToTeam($team), 403);
+        abort_if(! $user || ! $team, 403);
 
-        $this->ensureTeamMemberHasRequiredRole($user, $team, $minimumRole);
+        $isMember = $user->belongsToTeam($team);
 
-        if ($request->route('current_team') && ! $user->isCurrentTeam($team)) {
-            $user->switchTeam($team);
+        // Platform super admins may view any tenant's workspace (e.g. from
+        // the admin overview) without being a member of it. Their own
+        // current-team session state is left untouched in that case.
+        abort_if(! $isMember && ! $user->is_super_admin, 403);
+
+        if ($isMember) {
+            $this->ensureTeamMemberHasRequiredRole($user, $team, $minimumRole);
+
+            if ($request->route('current_team') && ! $user->isCurrentTeam($team)) {
+                $user->switchTeam($team);
+            }
         }
 
         return $next($request);

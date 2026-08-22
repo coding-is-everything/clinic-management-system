@@ -96,6 +96,16 @@ class Team extends Model
     }
 
     /**
+     * Get the clinic branches that belong to this team.
+     *
+     * @return HasMany<Clinic, $this>
+     */
+    public function clinics(): HasMany
+    {
+        return $this->hasMany(Clinic::class);
+    }
+
+    /**
      * Get the attributes that should be cast.
      *
      * @return array<string, string>

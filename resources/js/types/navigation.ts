@@ -12,3 +12,11 @@ export type NavItem = {
     icon?: LucideIcon | null;
     isActive?: boolean;
 };
+
+export type ClinicModule = {
+    key: string;
+    title: string;
+    icon: string;
+    description: string;
+    tables: string[];
+};
