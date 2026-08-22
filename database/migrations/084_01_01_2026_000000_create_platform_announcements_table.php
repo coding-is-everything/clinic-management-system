@@ -12,11 +12,11 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->longText('message');
-            $table->string('announcement_type', 'INFO','MAINTENANCE','WARNING','CRITICAL','RELEASE')->nullable()->default('info');
-            $table->string('target_scope', 'ALL','SELECTED_TENANTS','SELECTED_ROLES')->nullable()->default('all');
+            $table->enum('announcement_type', ['info', 'maintenance', 'warning', 'critical', 'release'])->nullable()->default('info');
+            $table->enum('target_scope', ['all', 'selected_tenants', 'selected_roles'])->nullable()->default('all');
             $table->dateTime('starts_at')->nullable();
             $table->dateTime('ends_at')->nullable();
-            $table->string('status', 'DRAFT','SCHEDULED','PUBLISHED','EXPIRED','CANCELLED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'scheduled', 'published', 'expired', 'cancelled'])->nullable()->default('draft');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

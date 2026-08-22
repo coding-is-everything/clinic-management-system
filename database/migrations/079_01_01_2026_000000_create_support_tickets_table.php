@@ -15,8 +15,8 @@ return new class extends Migration
             $table->string('subject', 255);
             $table->longText('description');
             $table->string('category', 100)->nullable();
-            $table->string('priority', 'LOW','MEDIUM','HIGH','URGENT')->nullable()->default('medium');
-            $table->string('status', 'OPEN','IN_PROGRESS','WAITING_CUSTOMER','RESOLVED','CLOSED')->nullable()->default('open');
+            $table->enum('priority', ['low', 'medium', 'high', 'urgent'])->nullable()->default('medium');
+            $table->enum('status', ['open', 'in_progress', 'waiting_customer', 'resolved', 'closed'])->nullable()->default('open');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('assigned_to')->nullable();
             $table->dateTime('opened_at');

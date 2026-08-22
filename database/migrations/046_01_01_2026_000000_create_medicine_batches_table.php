@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('received_quantity', 12, 2)->nullable()->default(0);
             $table->decimal('available_quantity', 12, 2)->nullable()->default(0);
             $table->decimal('reserved_quantity', 12, 2)->nullable()->default(0);
-            $table->string('status', 'ACTIVE','BLOCKED','EXPIRED','EXHAUSTED')->nullable()->default('active');
+            $table->enum('status', ['active', 'blocked', 'expired', 'exhausted'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'medicine_id', 'batch_no'], 'uq_batch');

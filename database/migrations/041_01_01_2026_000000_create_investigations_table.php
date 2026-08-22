@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('specimen_type', 100)->nullable();
             $table->unsignedInteger('turnaround_minutes')->nullable();
             $table->decimal('price', 14, 2)->nullable()->default(0);
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'code'], 'uq_investigation');

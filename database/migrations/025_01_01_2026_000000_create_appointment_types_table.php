@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('fee', 14, 2)->nullable()->default(0);
             $table->integer('priority_level')->nullable()->default(0);
             $table->unsignedInteger('followup_valid_days')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'code'], 'uq_appt_type');

@@ -14,8 +14,8 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('code', 50);
             $table->string('floor', 50)->nullable();
-            $table->string('room_type', 'CONSULTATION','PROCEDURE','DIAGNOSTIC','PHARMACY','OTHER')->nullable()->default('consultation');
-            $table->string('status', 'AVAILABLE','OCCUPIED','MAINTENANCE','BLOCKED','CLOSED')->nullable()->default('available');
+            $table->enum('room_type', ['consultation', 'procedure', 'diagnostic', 'pharmacy', 'other'])->nullable()->default('consultation');
+            $table->enum('status', ['available', 'occupied', 'maintenance', 'blocked', 'closed'])->nullable()->default('available');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['clinic_id', 'code'], 'uq_room');

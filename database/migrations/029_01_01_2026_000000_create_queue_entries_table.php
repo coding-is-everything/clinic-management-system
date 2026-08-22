@@ -18,9 +18,9 @@ return new class extends Migration
             $table->unsignedBigInteger('room_id')->nullable();
             $table->string('token_no', 50);
             $table->date('queue_date');
-            $table->string('priority', 'NORMAL','HIGH','URGENT','EMERGENCY')->nullable()->default('normal');
+            $table->enum('priority', ['normal', 'high', 'urgent', 'emergency'])->nullable()->default('normal');
             $table->unsignedInteger('position')->nullable();
-            $table->string('status', 'WAITING','CALLED','IN_CONSULTATION','COMPLETED','SKIPPED','NO_SHOW','CANCELLED','TRANSFERRED')->nullable()->default('waiting');
+            $table->enum('status', ['waiting', 'called', 'in_consultation', 'completed', 'skipped', 'no_show', 'cancelled', 'transferred'])->nullable()->default('waiting');
             $table->dateTime('check_in_at')->nullable();
             $table->dateTime('called_at')->nullable();
             $table->dateTime('recalled_at')->nullable();

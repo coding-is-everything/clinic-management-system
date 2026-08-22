@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('code', 50);
             $table->string('email', 150)->nullable();
             $table->string('phone', 30)->nullable();
-            $table->string('status', 'TRIAL','ACTIVE','SUSPENDED','CANCELLED','ARCHIVED')->nullable()->default('trial');
+            $table->enum('status', ['trial', 'active', 'suspended', 'cancelled', 'archived'])->nullable()->default('trial');
             $table->string('timezone', 100)->nullable()->default('Asia/Kolkata');
             $table->string('locale', 20)->nullable()->default('en_IN');
             $table->char('currency', 3)->nullable()->default('INR');

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->decimal('yearly_price', 14, 2)->nullable()->default(0);
             $table->char('currency', 3)->nullable()->default('INR');
             $table->unsignedInteger('trial_days')->nullable()->default(0);
-            $table->string('status', 'ACTIVE','INACTIVE','ARCHIVED')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive', 'archived'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

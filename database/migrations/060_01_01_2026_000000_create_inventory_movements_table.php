@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('inventory_movements', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('inventory_item_id');
-            $table->string('movement_type', 'PURCHASE','ISSUE','RETURN','ADJUSTMENT','OPENING','WRITEOFF');
+            $table->enum('movement_type', ['purchase', 'issue', 'return', 'adjustment', 'opening', 'writeoff']);
             $table->decimal('quantity_in', 12, 2)->nullable()->default(0);
             $table->decimal('quantity_out', 12, 2)->nullable()->default(0);
             $table->decimal('balance_quantity', 12, 2)->nullable()->default(0);

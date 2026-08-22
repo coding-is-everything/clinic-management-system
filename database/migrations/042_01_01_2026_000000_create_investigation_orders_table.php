@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('encounter_id')->nullable();
             $table->string('order_no', 60);
             $table->dateTime('order_date');
-            $table->string('priority', 'ROUTINE','URGENT','STAT')->nullable()->default('routine');
-            $table->string('status', 'ORDERED','SAMPLE_PENDING','SAMPLE_COLLECTED','PROCESSING','RESULT_PENDING','COMPLETED','CANCELLED')->nullable()->default('ordered');
+            $table->enum('priority', ['routine', 'urgent', 'stat'])->nullable()->default('routine');
+            $table->enum('status', ['ordered', 'sample_pending', 'sample_collected', 'processing', 'result_pending', 'completed', 'cancelled'])->nullable()->default('ordered');
             $table->text('notes')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

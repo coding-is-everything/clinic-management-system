@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name', 150);
             $table->string('code', 50);
             $table->text('description')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'code'], 'uq_spec');

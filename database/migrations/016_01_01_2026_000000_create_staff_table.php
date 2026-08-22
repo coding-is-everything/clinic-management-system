@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('employee_code', 50)->nullable();
             $table->string('designation', 150)->nullable();
             $table->date('joining_date')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE','SUSPENDED')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive', 'suspended'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

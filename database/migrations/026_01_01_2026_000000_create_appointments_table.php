@@ -20,11 +20,11 @@ return new class extends Migration
             $table->date('appointment_date');
             $table->time('start_time');
             $table->time('end_time');
-            $table->string('booking_source', 'RECEPTION','ONLINE','DOCTOR','ADMIN','PHONE','WALK_IN','API')->nullable()->default('reception');
+            $table->enum('booking_source', ['reception', 'online', 'doctor', 'admin', 'phone', 'walk_in', 'api'])->nullable()->default('reception');
             $table->text('reason_for_visit')->nullable();
             $table->text('notes')->nullable();
-            $table->string('status', 'BOOKED','CONFIRMED','CHECKED_IN','WAITING','CALLED','IN_CONSULTATION','COMPLETED','CANCELLED','NO_SHOW','RESCHEDULED')->nullable()->default('booked');
-            $table->string('payment_status', 'UNPAID','PARTIAL','PAID','REFUNDED')->nullable()->default('unpaid');
+            $table->enum('status', ['booked', 'confirmed', 'checked_in', 'waiting', 'called', 'in_consultation', 'completed', 'cancelled', 'no_show', 'rescheduled'])->nullable()->default('booked');
+            $table->enum('payment_status', ['unpaid', 'partial', 'paid', 'refunded'])->nullable()->default('unpaid');
             $table->unsignedBigInteger('booked_by')->nullable();
             $table->dateTime('checked_in_at')->nullable();
             $table->dateTime('consultation_started_at')->nullable();

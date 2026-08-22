@@ -18,9 +18,9 @@ return new class extends Migration
             $table->date('preferred_date')->nullable();
             $table->time('preferred_start_time')->nullable();
             $table->time('preferred_end_time')->nullable();
-            $table->string('priority', 'NORMAL','HIGH','URGENT','EMERGENCY')->nullable()->default('normal');
+            $table->enum('priority', ['normal', 'high', 'urgent', 'emergency'])->nullable()->default('normal');
             $table->text('notes')->nullable();
-            $table->string('status', 'WAITING','MATCHED','BOOKED','SKIPPED','CANCELLED')->nullable()->default('waiting');
+            $table->enum('status', ['waiting', 'matched', 'booked', 'skipped', 'cancelled'])->nullable()->default('waiting');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->foreign('tenant_id')->references('id')->on('tenants');

@@ -12,11 +12,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('service_id')->nullable();
-            $table->string('fee_type', 'NEW','FOLLOWUP','REVIEW','EMERGENCY','OTHER');
+            $table->enum('fee_type', ['new', 'followup', 'review', 'emergency', 'other']);
             $table->decimal('amount', 14, 2);
             $table->date('effective_from');
             $table->date('effective_until')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->foreign('doctor_id')->references('id')->on('doctors');

@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('system_health_checks', function (Blueprint $table) {
             $table->id();
             $table->string('service_name', 150);
-            $table->string('status', 'HEALTHY','DEGRADED','DOWN');
+            $table->enum('status', ['healthy', 'degraded', 'down']);
             $table->integer('response_time_ms')->nullable();
             $table->json('details')->nullable();
             $table->dateTime('checked_at');

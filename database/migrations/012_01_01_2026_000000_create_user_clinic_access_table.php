@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('clinic_id');
-            $table->string('access_level', 'FULL','OPERATIONAL','READ_ONLY','DEPARTMENT')->nullable()->default('operational');
+            $table->enum('access_level', ['full', 'operational', 'read_only', 'department'])->nullable()->default('operational');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['user_id', 'clinic_id'], 'uq_user_clinic');

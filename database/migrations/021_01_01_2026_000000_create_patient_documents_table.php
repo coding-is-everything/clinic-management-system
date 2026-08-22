@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('file_path', 500);
             $table->string('mime_type', 100)->nullable();
             $table->unsignedBigInteger('file_size')->nullable();
-            $table->string('visibility', 'INTERNAL_CLINICAL','ADMIN_ONLY','PATIENT_VISIBLE','DOCTOR_ONLY')->nullable()->default('internal_clinical');
+            $table->enum('visibility', ['internal_clinical', 'admin_only', 'patient_visible', 'doctor_only'])->nullable()->default('internal_clinical');
             $table->unsignedBigInteger('uploaded_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

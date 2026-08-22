@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('gstin', 30)->nullable();
             $table->string('registration_no', 100)->nullable();
             $table->string('logo_path', 500)->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE','MAINTENANCE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive', 'maintenance'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();

@@ -13,10 +13,10 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->string('name', 150);
             $table->string('provider', 100);
-            $table->string('integration_type', 'API','WEBHOOK','PAYMENT','MESSAGING','EMAIL','STORAGE','OTHER');
+            $table->enum('integration_type', ['api', 'webhook', 'payment', 'messaging', 'email', 'storage', 'other']);
             $table->json('credentials_encrypted')->nullable();
             $table->json('configuration')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE','ERROR','TESTING')->nullable()->default('inactive');
+            $table->enum('status', ['active', 'inactive', 'error', 'testing'])->nullable()->default('inactive');
             $table->dateTime('last_success_at')->nullable();
             $table->dateTime('last_error_at')->nullable();
             $table->dateTime('created_at')->nullable();

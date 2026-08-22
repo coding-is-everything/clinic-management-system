@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name', 150);
             $table->string('code', 150);
             $table->text('description')->nullable();
-            $table->string('risk_level', 'LOW','MEDIUM','HIGH','CRITICAL')->nullable()->default('low');
+            $table->enum('risk_level', ['low', 'medium', 'high', 'critical'])->nullable()->default('low');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('event_type', 100);
-            $table->string('severity', 'INFO','WARNING','HIGH','CRITICAL')->nullable()->default('info');
+            $table->enum('severity', ['info', 'warning', 'high', 'critical'])->nullable()->default('info');
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->json('metadata')->nullable();

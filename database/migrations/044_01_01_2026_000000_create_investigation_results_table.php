@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('verified_by')->nullable();
             $table->dateTime('entered_at')->nullable();
             $table->dateTime('verified_at')->nullable();
-            $table->string('status', 'DRAFT','ENTERED','VERIFIED','RELEASED','AMENDED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'entered', 'verified', 'released', 'amended'])->nullable()->default('draft');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->foreign('order_item_id')->references('id')->on('investigation_order_items');

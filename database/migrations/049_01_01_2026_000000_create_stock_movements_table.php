@@ -14,7 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('clinic_id');
             $table->unsignedBigInteger('medicine_id')->nullable();
             $table->unsignedBigInteger('batch_id')->nullable();
-            $table->string('transaction_type', 'PURCHASE','SALE','DISPENSING','RETURN','DAMAGE','EXPIRY','ADJUSTMENT','OPENING','WRITEOFF');
+            $table->enum('transaction_type', ['purchase', 'sale', 'dispensing', 'return', 'damage', 'expiry', 'adjustment', 'opening', 'writeoff']);
             $table->string('reference_type', 100)->nullable();
             $table->unsignedBigInteger('reference_id')->nullable();
             $table->decimal('quantity_in', 12, 2)->nullable()->default(0);

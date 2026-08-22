@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->string('condition_name', 200);
             $table->date('diagnosed_date')->nullable();
-            $table->string('status', 'ACTIVE','CONTROLLED','RESOLVED','HISTORICAL','UNKNOWN')->nullable()->default('active');
+            $table->enum('status', ['active', 'controlled', 'resolved', 'historical', 'unknown'])->nullable()->default('active');
             $table->text('notes')->nullable();
             $table->unsignedBigInteger('recorded_by')->nullable();
             $table->dateTime('created_at')->nullable();

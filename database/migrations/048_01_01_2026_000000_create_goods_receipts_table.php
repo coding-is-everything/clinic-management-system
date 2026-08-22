@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('purchase_order_id');
             $table->string('grn_no', 60);
             $table->date('received_date');
-            $table->string('status', 'DRAFT','CONFIRMED','CANCELLED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'confirmed', 'cancelled'])->nullable()->default('draft');
             $table->unsignedBigInteger('received_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->date('followup_date');
             $table->text('reason')->nullable();
             $table->text('notes')->nullable();
-            $table->string('status', 'PENDING','BOOKED','COMPLETED','MISSED','CANCELLED')->nullable()->default('pending');
+            $table->enum('status', ['pending', 'booked', 'completed', 'missed', 'cancelled'])->nullable()->default('pending');
             $table->unsignedBigInteger('appointment_id')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
