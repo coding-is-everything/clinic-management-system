@@ -1,4 +1,4 @@
-import { Form } from '@inertiajs/react';
+import { Form, Link } from '@inertiajs/react';
 import { LogIn, User } from 'lucide-react';
 import { request } from '@/routes/password';
 import { store } from '@/routes/login';
@@ -52,12 +52,12 @@ export default function LoginForm({ canResetPassword }) {
                                 Password
                             </label>
                             {canResetPassword && (
-                                <a
+                                <Link
                                     href={request()}
                                     className="text-label-md text-clinical-teal transition-colors hover:text-clinical-teal-dark"
                                 >
                                     Forgot Password?
-                                </a>
+                                </Link>
                             )}
                         </div>
                         <PasswordField
