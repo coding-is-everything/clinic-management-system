@@ -95,6 +95,13 @@
     --text-label-sm--line-height: 16px;
     --text-label-sm--letter-spacing: 0.03em;
     --text-label-sm--font-weight: 600;
+
+    --text-title-lg: 18px;
+    --text-title-lg--line-height: 24px;
+    --text-title-lg--font-weight: 600;
+
+    --text-data-mono: 13px;
+    --text-data-mono--line-height: 18px;
 }
 
 :root {
