@@ -19,11 +19,16 @@ class LoginResponse implements LoginResponseContract
             return new JsonResponse(['two_factor' => false], 200);
         }
 
+        $redirectPath = $this->redirectPathForCurrentTeam($request, Fortify::redirects('login'));
+
         Inertia::flash('toast', [
             'type' => 'success',
-            'message' => __('Welcome back, :name!', ['name' => $request->user()->name]),
+            'message' => __('Welcome back, :name! You\'re signed in to :team.', [
+                'name' => $request->user()->name,
+                'team' => $this->currentTeam($request)->name,
+            ]),
         ]);
 
-        return redirect()->intended($this->redirectPathForCurrentTeam($request, Fortify::redirects('login')));
+        return redirect()->intended($redirectPath);
     }
 }

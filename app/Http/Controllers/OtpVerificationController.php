@@ -69,12 +69,17 @@ class OtpVerificationController extends Controller
         $request->session()->forget('otp.id');
         $request->session()->regenerate();
 
+        $redirectPath = $this->redirectPathForCurrentTeam($request, Fortify::redirects('login'));
+
         Inertia::flash('toast', [
             'type' => 'success',
-            'message' => __('Welcome back, :name!', ['name' => $user->name]),
+            'message' => __('Welcome back, :name! You\'re signed in to :team.', [
+                'name' => $user->name,
+                'team' => $this->currentTeam($request)->name,
+            ]),
         ]);
 
-        return redirect()->intended($this->redirectPathForCurrentTeam($request, Fortify::redirects('login')));
+        return redirect()->intended($redirectPath);
     }
 
     public function resend(Request $request): RedirectResponse
