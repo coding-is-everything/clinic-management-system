@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Actions\Fortify\RedirectIfAccountRestricted;
 use App\Actions\Fortify\RedirectIfEmailOtpRequired;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Http\Responses\LoginResponse;
@@ -66,6 +67,7 @@ class FortifyServiceProvider extends ServiceProvider
             config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
             config('fortify.lowercase_usernames') ? CanonicalizeUsername::class : null,
             Features::enabled(Features::twoFactorAuthentication()) ? RedirectsIfTwoFactorAuthenticatable::class : null,
+            RedirectIfAccountRestricted::class,
             RedirectIfEmailOtpRequired::class,
             AttemptToAuthenticate::class,
             PrepareAuthenticatedSession::class,

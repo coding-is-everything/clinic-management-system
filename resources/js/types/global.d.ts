@@ -1,4 +1,5 @@
 import type { Auth } from '@/types/auth';
+import type { ClinicModule } from '@/types/navigation';
 import type { Team } from '@/types/teams';
 
 declare module 'react' {
@@ -16,6 +17,7 @@ declare module '@inertiajs/core' {
             sidebarOpen: boolean;
             currentTeam: Team | null;
             teams: Team[];
+            clinicModules: ClinicModule[];
             [key: string]: unknown;
         };
     }
