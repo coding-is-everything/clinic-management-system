@@ -18,7 +18,7 @@ return new class extends Migration
             $table->time('end_time')->nullable();
             $table->string('leave_type', 100)->nullable();
             $table->text('reason')->nullable();
-            $table->string('status', 'PENDING','APPROVED','REJECTED','CANCELLED')->nullable()->default('approved');
+            $table->enum('status', ['pending', 'approved', 'rejected', 'cancelled'])->nullable()->default('approved');
             $table->unsignedBigInteger('approved_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

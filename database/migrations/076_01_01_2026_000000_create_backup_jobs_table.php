@@ -11,13 +11,13 @@ return new class extends Migration
         Schema::create('backup_jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('tenant_id')->nullable();
-            $table->string('backup_type', 'FULL','INCREMENTAL','DATABASE','FILES');
+            $table->enum('backup_type', ['full', 'incremental', 'database', 'files']);
             $table->string('storage_path', 500)->nullable();
             $table->dateTime('started_at')->nullable();
             $table->dateTime('completed_at')->nullable();
             $table->unsignedBigInteger('size_bytes')->nullable();
             $table->string('checksum', 255)->nullable();
-            $table->string('status', 'QUEUED','RUNNING','COMPLETED','FAILED','DELETED')->nullable()->default('queued');
+            $table->enum('status', ['queued', 'running', 'completed', 'failed', 'deleted'])->nullable()->default('queued');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->foreign('tenant_id')->references('id')->on('tenants');

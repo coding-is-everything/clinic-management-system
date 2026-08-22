@@ -17,14 +17,14 @@ return new class extends Migration
             $table->string('middle_name', 100)->nullable();
             $table->string('last_name', 100)->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->string('gender', 'MALE','FEMALE','OTHER','PREFER_NOT_TO_SAY');
+            $table->enum('gender', ['male', 'female', 'other', 'prefer_not_to_say']);
             $table->string('blood_group', 10)->nullable();
             $table->string('marital_status', 50)->nullable();
             $table->string('occupation', 150)->nullable();
             $table->string('mobile', 30)->nullable();
             $table->string('alternate_mobile', 30)->nullable();
             $table->string('email', 150)->nullable();
-            $table->string('preferred_contact_method', 'SMS','WHATSAPP','EMAIL','PHONE','PORTAL')->nullable();
+            $table->enum('preferred_contact_method', ['sms', 'whatsapp', 'email', 'phone', 'portal'])->nullable();
             $table->string('preferred_language', 50)->nullable();
             $table->string('address_line1', 255)->nullable();
             $table->string('address_line2', 255)->nullable();
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('emergency_contact_relationship', 100)->nullable();
             $table->string('emergency_contact_mobile', 30)->nullable();
             $table->string('profile_photo', 500)->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE','ARCHIVED','MERGED')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive', 'archived', 'merged'])->nullable()->default('active');
             $table->dateTime('registered_at');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->dateTime('created_at')->nullable();

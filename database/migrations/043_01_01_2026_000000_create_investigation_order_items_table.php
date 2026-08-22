@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('investigation_id');
             $table->decimal('price', 14, 2)->nullable()->default(0);
-            $table->string('status', 'ORDERED','SAMPLE_PENDING','SAMPLE_COLLECTED','PROCESSING','RESULT_PENDING','COMPLETED','CANCELLED')->nullable()->default('ordered');
+            $table->enum('status', ['ordered', 'sample_pending', 'sample_collected', 'processing', 'result_pending', 'completed', 'cancelled'])->nullable()->default('ordered');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->foreign('order_id')->references('id')->on('investigation_orders');

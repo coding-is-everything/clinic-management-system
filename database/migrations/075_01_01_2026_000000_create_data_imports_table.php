@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('valid_rows')->nullable()->default(0);
             $table->unsignedInteger('invalid_rows')->nullable()->default(0);
             $table->unsignedInteger('duplicate_rows')->nullable()->default(0);
-            $table->string('status', 'UPLOADED','VALIDATING','VALIDATED','PROCESSING','COMPLETED','FAILED','CANCELLED')->nullable()->default('uploaded');
+            $table->enum('status', ['uploaded', 'validating', 'validated', 'processing', 'completed', 'failed', 'cancelled'])->nullable()->default('uploaded');
             $table->string('error_file_path', 500)->nullable();
             $table->unsignedBigInteger('imported_by')->nullable();
             $table->dateTime('created_at')->nullable();

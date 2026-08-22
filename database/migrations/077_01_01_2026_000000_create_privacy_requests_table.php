@@ -12,9 +12,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tenant_id');
             $table->unsignedBigInteger('patient_id')->nullable();
-            $table->string('request_type', 'ACCESS','EXPORT','CORRECTION','DELETION','RESTRICTION','CONSENT_WITHDRAWAL');
+            $table->enum('request_type', ['access', 'export', 'correction', 'deletion', 'restriction', 'consent_withdrawal']);
             $table->text('reason')->nullable();
-            $table->string('status', 'REQUESTED','UNDER_REVIEW','APPROVED','REJECTED','COMPLETED')->nullable()->default('requested');
+            $table->enum('status', ['requested', 'under_review', 'approved', 'rejected', 'completed'])->nullable()->default('requested');
             $table->unsignedBigInteger('requested_by')->nullable();
             $table->unsignedBigInteger('processed_by')->nullable();
             $table->dateTime('requested_at');

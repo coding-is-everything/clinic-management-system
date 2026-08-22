@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('refund_no', 60);
             $table->dateTime('refund_date')->nullable();
             $table->decimal('amount', 14, 2);
-            $table->string('refund_method', 'CASH','UPI','BANK_TRANSFER','CARD','OTHER');
+            $table->enum('refund_method', ['cash', 'upi', 'bank_transfer', 'card', 'other']);
             $table->text('reason');
-            $table->string('status', 'REQUESTED','APPROVED','REJECTED','PROCESSED','CANCELLED')->nullable()->default('requested');
+            $table->enum('status', ['requested', 'approved', 'rejected', 'processed', 'cancelled'])->nullable()->default('requested');
             $table->unsignedBigInteger('requested_by')->nullable();
             $table->unsignedBigInteger('approved_by')->nullable();
             $table->unsignedBigInteger('processed_by')->nullable();

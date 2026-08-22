@@ -12,12 +12,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->unsignedBigInteger('integration_id')->nullable();
-            $table->string('direction', 'INBOUND','OUTBOUND');
+            $table->enum('direction', ['inbound', 'outbound']);
             $table->string('event_code', 100)->nullable();
             $table->json('request_payload')->nullable();
             $table->json('response_payload')->nullable();
             $table->integer('http_status')->nullable();
-            $table->string('status', 'SUCCESS','FAILED','RETRYING');
+            $table->enum('status', ['success', 'failed', 'retrying']);
             $table->text('error_message')->nullable();
             $table->dateTime('created_at');
             $table->foreign('tenant_id')->references('id')->on('tenants');

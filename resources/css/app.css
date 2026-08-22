@@ -59,6 +59,42 @@
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+
+    --color-clinical-teal: var(--clinical-teal);
+    --color-clinical-teal-dark: var(--clinical-teal-dark);
+    --color-medical-blue: var(--medical-blue);
+
+    --font-heading: 'Manrope', var(--font-sans);
+
+    --text-display-lg: 36px;
+    --text-display-lg--line-height: 44px;
+    --text-display-lg--letter-spacing: -0.02em;
+    --text-display-lg--font-weight: 700;
+
+    --text-headline-lg: 28px;
+    --text-headline-lg--line-height: 36px;
+    --text-headline-lg--letter-spacing: -0.01em;
+    --text-headline-lg--font-weight: 600;
+
+    --text-headline-md: 20px;
+    --text-headline-md--line-height: 28px;
+    --text-headline-md--font-weight: 600;
+
+    --text-body-lg: 16px;
+    --text-body-lg--line-height: 24px;
+
+    --text-body-md: 14px;
+    --text-body-md--line-height: 20px;
+
+    --text-label-md: 13px;
+    --text-label-md--line-height: 18px;
+    --text-label-md--letter-spacing: 0.01em;
+    --text-label-md--font-weight: 500;
+
+    --text-label-sm: 11px;
+    --text-label-sm--line-height: 16px;
+    --text-label-sm--letter-spacing: 0.03em;
+    --text-label-sm--font-weight: 600;
 }
 
 :root {
@@ -95,6 +131,10 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.87 0 0);
+
+    --clinical-teal: #0d9488;
+    --clinical-teal-dark: #0b7c71;
+    --medical-blue: #0f172a;
 }
 
 .dark {

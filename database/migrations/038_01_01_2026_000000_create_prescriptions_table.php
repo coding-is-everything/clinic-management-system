@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('prescription_no', 60);
             $table->date('prescription_date');
             $table->text('notes')->nullable();
-            $table->string('status', 'DRAFT','ISSUED','DISPENSED','CANCELLED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'issued', 'dispensed', 'cancelled'])->nullable()->default('draft');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'prescription_no'], 'uq_rx_no');

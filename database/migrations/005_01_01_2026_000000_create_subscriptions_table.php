@@ -18,7 +18,7 @@ return new class extends Migration
             $table->dateTime('renews_at')->nullable();
             $table->decimal('amount', 14, 2)->nullable()->default(0);
             $table->char('currency', 3)->nullable()->default('INR');
-            $table->string('status', 'TRIAL','ACTIVE','PAST_DUE','PAUSED','CANCELLED','EXPIRED')->nullable()->default('trial');
+            $table->enum('status', ['trial', 'active', 'past_due', 'paused', 'cancelled', 'expired'])->nullable()->default('trial');
             $table->string('external_reference', 150)->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

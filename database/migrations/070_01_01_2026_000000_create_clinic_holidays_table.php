@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('clinic_id');
             $table->date('holiday_date');
             $table->string('name', 150);
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['clinic_id', 'holiday_date'], 'uq_holiday');

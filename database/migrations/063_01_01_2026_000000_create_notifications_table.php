@@ -13,12 +13,12 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('patient_id')->nullable();
-            $table->string('channel', 'SMS','WHATSAPP','EMAIL','IN_APP');
+            $table->enum('channel', ['sms', 'whatsapp', 'email', 'in_app']);
             $table->string('event_code', 100)->nullable();
             $table->string('recipient', 255);
             $table->string('subject', 255)->nullable();
             $table->text('body');
-            $table->string('status', 'QUEUED','SENT','DELIVERED','FAILED','READ')->nullable()->default('queued');
+            $table->enum('status', ['queued', 'sent', 'delivered', 'failed', 'read'])->nullable()->default('queued');
             $table->string('provider_message_id', 255)->nullable();
             $table->dateTime('sent_at')->nullable();
             $table->dateTime('delivered_at')->nullable();

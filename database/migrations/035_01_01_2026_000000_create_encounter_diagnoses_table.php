@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('encounter_id');
             $table->unsignedBigInteger('diagnosis_id')->nullable();
             $table->string('diagnosis_name', 200);
-            $table->string('diagnosis_type', 'PRIMARY','SECONDARY','PROVISIONAL','CONFIRMED','RULE_OUT','HISTORICAL');
+            $table->enum('diagnosis_type', ['primary', 'secondary', 'provisional', 'confirmed', 'rule_out', 'historical']);
             $table->text('notes')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->foreign('encounter_id')->references('id')->on('encounters');

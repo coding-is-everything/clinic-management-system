@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('employee_code', 50)->nullable();
             $table->string('profile_photo', 500)->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE','INVITED','PENDING','SUSPENDED','LOCKED')->nullable()->default('pending');
+            $table->enum('status', ['active', 'inactive', 'invited', 'pending', 'suspended', 'locked'])->nullable()->default('pending');
             $table->dateTime('email_verified_at')->nullable();
             $table->dateTime('mobile_verified_at')->nullable();
             $table->dateTime('last_login_at')->nullable();

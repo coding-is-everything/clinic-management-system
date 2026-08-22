@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('email', 150)->nullable();
             $table->string('mobile', 30)->nullable();
             $table->string('password', 255);
-            $table->string('status', 'ACTIVE','INACTIVE','INVITED','LOCKED')->nullable()->default('invited');
+            $table->enum('status', ['active', 'inactive', 'invited', 'locked'])->nullable()->default('invited');
             $table->dateTime('last_login_at')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

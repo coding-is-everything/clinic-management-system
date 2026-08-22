@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('middle_name', 100)->nullable();
             $table->string('last_name', 100)->nullable();
             $table->string('display_name', 200);
-            $table->string('gender', 'MALE','FEMALE','OTHER','PREFER_NOT_TO_SAY')->nullable();
+            $table->enum('gender', ['male', 'female', 'other', 'prefer_not_to_say'])->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('mobile', 30)->nullable();
             $table->string('email', 150)->nullable();
@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string('registration_state', 100)->nullable();
             $table->date('registration_date')->nullable();
             $table->date('registration_expiry_date')->nullable();
-            $table->string('verification_status', 'PENDING','VERIFIED','REJECTED','EXPIRED')->nullable()->default('pending');
-            $table->string('status', 'DRAFT','ACTIVE','INACTIVE','SUSPENDED')->nullable()->default('draft');
+            $table->enum('verification_status', ['pending', 'verified', 'rejected', 'expired'])->nullable()->default('pending');
+            $table->enum('status', ['draft', 'active', 'inactive', 'suspended'])->nullable()->default('draft');
             $table->string('signature_path', 500)->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

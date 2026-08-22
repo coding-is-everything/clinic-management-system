@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('route', 100)->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->string('source', 'CLINIC_PRESCRIPTION','EXTERNAL_PRESCRIPTION','PATIENT_REPORTED');
-            $table->string('status', 'ACTIVE','STOPPED','HISTORICAL')->nullable()->default('active');
+            $table->enum('source', ['clinic_prescription', 'external_prescription', 'patient_reported']);
+            $table->enum('status', ['active', 'stopped', 'historical'])->nullable()->default('active');
             $table->text('notes')->nullable();
             $table->unsignedBigInteger('recorded_by')->nullable();
             $table->dateTime('created_at')->nullable();

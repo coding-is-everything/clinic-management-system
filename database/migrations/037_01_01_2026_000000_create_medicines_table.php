@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('barcode', 100)->nullable();
             $table->string('manufacturer', 200)->nullable();
             $table->boolean('prescription_required')->nullable()->default(false);
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'medicine_code'], 'uq_medicine');

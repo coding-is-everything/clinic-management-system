@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('receipt_no', 60);
             $table->dateTime('payment_date');
             $table->decimal('amount', 14, 2);
-            $table->string('payment_method', 'CASH','UPI','CARD','BANK_TRANSFER','CHEQUE','OTHER');
+            $table->enum('payment_method', ['cash', 'upi', 'card', 'bank_transfer', 'cheque', 'other']);
             $table->string('reference_no', 150)->nullable();
             $table->text('notes')->nullable();
-            $table->string('status', 'PENDING','COMPLETED','FAILED','CANCELLED','REFUNDED')->nullable()->default('completed');
+            $table->enum('status', ['pending', 'completed', 'failed', 'cancelled', 'refunded'])->nullable()->default('completed');
             $table->unsignedBigInteger('received_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('encounter_date');
             $table->dateTime('started_at')->nullable();
             $table->dateTime('completed_at')->nullable();
-            $table->string('status', 'DRAFT','IN_PROGRESS','COMPLETED','LOCKED','AMENDED','CANCELLED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'in_progress', 'completed', 'locked', 'amended', 'cancelled'])->nullable()->default('draft');
             $table->text('clinical_summary')->nullable();
             $table->text('internal_notes')->nullable();
             $table->unsignedBigInteger('created_by')->nullable();

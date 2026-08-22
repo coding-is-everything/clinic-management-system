@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('mime_type', 100)->nullable();
             $table->unsignedBigInteger('file_size')->nullable();
             $table->unsignedInteger('version_no')->nullable()->default(1);
-            $table->string('visibility', 'INTERNAL','DOCTOR','ADMIN','PATIENT')->nullable()->default('internal');
+            $table->enum('visibility', ['internal', 'doctor', 'admin', 'patient'])->nullable()->default('internal');
             $table->unsignedBigInteger('uploaded_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

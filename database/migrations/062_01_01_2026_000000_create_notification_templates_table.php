@@ -13,11 +13,11 @@ return new class extends Migration
             $table->unsignedBigInteger('tenant_id')->nullable();
             $table->string('name', 150);
             $table->string('event_code', 100);
-            $table->string('channel', 'SMS','WHATSAPP','EMAIL','IN_APP');
+            $table->enum('channel', ['sms', 'whatsapp', 'email', 'in_app']);
             $table->string('subject', 255)->nullable();
             $table->text('body');
             $table->json('variables')->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
         });

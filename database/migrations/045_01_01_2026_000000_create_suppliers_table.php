@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('gstin', 30)->nullable();
             $table->string('pan', 20)->nullable();
             $table->string('payment_terms', 150)->nullable();
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'code'], 'uq_supplier');

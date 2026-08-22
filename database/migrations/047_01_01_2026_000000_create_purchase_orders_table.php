@@ -20,7 +20,7 @@ return new class extends Migration
             $table->decimal('discount_amount', 14, 2)->nullable()->default(0);
             $table->decimal('tax_amount', 14, 2)->nullable()->default(0);
             $table->decimal('total_amount', 14, 2)->nullable()->default(0);
-            $table->string('status', 'DRAFT','CREATED','SENT','PARTIALLY_RECEIVED','RECEIVED','CANCELLED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'created', 'sent', 'partially_received', 'received', 'cancelled'])->nullable()->default('draft');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

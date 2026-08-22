@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('paid_amount', 14, 2)->nullable()->default(0);
             $table->decimal('refunded_amount', 14, 2)->nullable()->default(0);
             $table->decimal('balance_amount', 14, 2)->nullable()->default(0);
-            $table->string('status', 'DRAFT','ISSUED','PARTIALLY_PAID','PAID','OVERDUE','CANCELLED','REFUNDED')->nullable()->default('draft');
+            $table->enum('status', ['draft', 'issued', 'partially_paid', 'paid', 'overdue', 'cancelled', 'refunded'])->nullable()->default('draft');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();

@@ -13,8 +13,8 @@ return new class extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->string('allergen', 200);
             $table->string('reaction', 255)->nullable();
-            $table->string('severity', 'MILD','MODERATE','SEVERE','CRITICAL')->nullable()->default('moderate');
-            $table->string('status', 'ACTIVE','RESOLVED','HISTORICAL')->nullable()->default('active');
+            $table->enum('severity', ['mild', 'moderate', 'severe', 'critical'])->nullable()->default('moderate');
+            $table->enum('status', ['active', 'resolved', 'historical'])->nullable()->default('active');
             $table->text('notes')->nullable();
             $table->unsignedBigInteger('recorded_by')->nullable();
             $table->dateTime('created_at')->nullable();

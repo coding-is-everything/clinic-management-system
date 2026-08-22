@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('unit', 50)->nullable();
             $table->decimal('minimum_stock', 12, 2)->nullable()->default(0);
             $table->decimal('current_stock', 12, 2)->nullable()->default(0);
-            $table->string('status', 'ACTIVE','INACTIVE')->nullable()->default('active');
+            $table->enum('status', ['active', 'inactive'])->nullable()->default('active');
             $table->dateTime('created_at')->nullable();
             $table->dateTime('updated_at')->nullable();
             $table->unique(['tenant_id', 'item_code'], 'uq_inventory_item');
